@@ -3,17 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Dropdowns\Index as DropdownsIndex;
 use App\Livewire\HomeIndex;
+use App\Livewire\Pages\Landings\Index;
 use App\Livewire\Rules\Index as RulesIndex;
 use App\Livewire\Users\Index as UsersIndex;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    if (auth()->check()) {
-        return redirect()->route('home.index');
-    }
-
-    return redirect()->route('login');
-});
+Route::get('/', Index::class)->name('landing');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
