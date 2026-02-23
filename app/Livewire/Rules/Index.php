@@ -61,7 +61,7 @@ class Index extends Component
         return view('livewire.rules.index', [
             'rules' => $service->all()
         ])
-        ->extends('layouts.app')
-        ->section('content');
+            ->extends('layouts.app')
+            ->section('content');
     }
 }

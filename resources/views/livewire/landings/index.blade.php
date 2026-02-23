@@ -400,20 +400,51 @@
     </style>
 
 
-    <header
-        class="sticky top-0 z-40 flex items-center justify-between border-b border-slate-100 bg-white/70 px-6 py-4 backdrop-blur-xl">
-        <div class="flex items-center gap-3">
-            <a href="{{ route('home.index') }}" wire:navigate
-                class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-600 shadow-sm transition-all hover:bg-slate-200">
-                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                </svg>
-            </a>
-            <div>
-                <h1 class="text-lg font-extrabold leading-none text-slate-800">Rules Management</h1>
-                <p class="mt-1 text-[9px] font-bold uppercase tracking-widest text-slate-400">Manajemen Aturan</p>
+    <header class="glass-header sticky top-0 z-50 w-full">
+        <nav class="container mx-auto px-4 py-4 md:px-6">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="group flex items-center gap-3">
+                    <div class="relative">
+                        <i class="bi bi-hexagon-fill logo-icon text-4xl transition-colors duration-300"></i>
+                        <div class="pulse-dot absolute -right-1 -top-1 h-3 w-3 rounded-full bg-green-400"></div>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold tracking-wide md:text-xl">MKM APPLICATION PORTAL</h1>
+                        <p class="-mt-1 text-xs text-white/70">PT Mitsubishi Krama Yudha Motors & Manufacturing</p>
+                    </div>
+                </a>
+
+                <!-- User Info & Help -->
+                <div class="flex items-center gap-4">
+                    <div
+                        class="hidden items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm backdrop-blur-md md:flex">
+                        <i class="bi bi-person-circle text-cyan-300"></i>
+                        <span class="text-white/80">Welcome, User</span>
+                    </div>
+                    <div class="relative">
+                        <button id="help-button"
+                            class="flex h-10 w-10 items-center justify-center rounded-full text-white/80 transition-all duration-300 hover:bg-white/10 hover:text-white">
+                            <i class="bi bi-question-circle-fill text-2xl"></i>
+                        </button>
+                        <div id="help-popover"
+                            class="absolute right-0 z-50 mt-3 hidden w-72 -translate-y-2 transform rounded-xl border border-cyan-400/30 bg-[#0d4f5d]/95 p-5 text-sm opacity-0 shadow-2xl backdrop-blur-md transition-all duration-300">
+                            <div class="mb-3 flex items-start gap-3">
+                                <i class="bi bi-info-circle-fill text-xl text-cyan-300"></i>
+                                <div>
+                                    <h3 class="mb-1 text-base font-semibold">Help Center</h3>
+                                    <p class="text-xs leading-relaxed text-white/80">Welcome to MKM Application Portal.
+                                        Click on any application icon to access it.</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 border-t border-white/10 pt-4">
+                                <p class="text-xs text-white/70">💡 Use the search bar to find applications quickly</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </nav>
     </header>
 
     <main class="relative z-10 flex-grow px-4 py-8 md:py-12">
@@ -480,206 +511,17 @@
                 </div>
 
                 <!-- Honeycomb Grid -->
-                <div id="honeycomb-grid" class="honeycomb-grid">
+                <div class="honeycomb-grid">
+                    @foreach ($menus as $menu)
+                        <div class="hex-item fade-in" data-category="{{ $menu->category }}"
+                            data-name="{{ $menu->title }}" data-keywords="{{ $menu->keywords }}">
 
-                    <!-- Applications -->
-                    <div class="hex-item fade-in" data-category="production" data-name="DigiMAMS"
-                        data-keywords="digimams production maintenance">
-                        <a href="https://apps.ptmkm.co.id/DigiMAMS" target="_blank" class="hex-content hexagon">
-                            <i class="bi bi-gear hex-icon"></i>
-                            <span class="hex-title">DigiMAMS</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="management" data-name="Audit Portal"
-                        data-keywords="audit portal quality">
-                        <a href="https://apps.ptmkm.co.id/mkm_auditportal" target="_blank" class="hex-content hexagon">
-                            <i class="bi bi-clipboard2-check hex-icon"></i>
-                            <span class="hex-title">Audit Portal</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="management" data-name="APAR Checksheet"
-                        data-keywords="apar checksheet fire safety">
-                        <a href="https://apps.ptmkm.co.id/mkm_apar/public/" target="_blank" class="hex-content hexagon">
-                            <i class="bi bi-fire hex-icon"></i>
-                            <span class="hex-title">APAR Checksheet</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="production" data-name="IWS Integration"
-                        data-keywords="iws integration ckd monitoring">
-                        <a href="https://apps.ptmkm.co.id/mkm_ckdMonitoring/public/" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-puzzle hex-icon"></i>
-                            <span class="hex-title">IWS Integration</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="production" data-name="Dies Smart System"
-                        data-keywords="dies smart system stroke monitoring">
-                        <a href="https://apps.ptmkm.co.id/mkm_strokeMonitoring/public/" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-cpu hex-icon"></i>
-                            <span class="hex-title">Dies Smart System</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="management" data-name="Customer & Supplier"
-                        data-keywords="customer supplier management">
-                        <a href="https://apps.ptmkm.co.id/mkm_suppliermst/public/" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-people hex-icon"></i>
-                            <span class="hex-title">Customer & Supplier</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="production" data-name="Engine Running Test"
-                        data-keywords="engine running test quality">
-                        <a href="http://172.17.210.224/iq-pro/login/login.php" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-activity hex-icon"></i>
-                            <span class="hex-title">Engine Test</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="production" data-name="TM Assy Test"
-                        data-keywords="tm assy test transmission">
-                        <a href="http://172.17.210.224/iq-pro/tm_login.php" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-sliders hex-icon"></i>
-                            <span class="hex-title">TM Assy Test</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="management" data-name="IT FAMS"
-                        data-keywords="it fams fixed asset management">
-                        <a href="https://apps.ptmkm.co.id/mkm_itfam/" target="_blank" class="hex-content hexagon">
-                            <i class="bi bi-pc-display-horizontal hex-icon"></i>
-                            <span class="hex-title">IT FAMS</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="monitoring" data-name="Energy Monitoring"
-                        data-keywords="energy monitoring power consumption">
-                        <a href="http://172.17.210.34/AnyGlass/MKM_SCADA/MKM_ENERGY/Main.gdfx" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-ev-station hex-icon"></i>
-                            <span class="hex-title">Energy Monitor</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="monitoring" data-name="SCADA Engine"
-                        data-keywords="scada engine monitoring control">
-                        <a href="http://172.17.210.34/anyglass/MKM_SCADA/Main.gdfx" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-graph-up-arrow hex-icon"></i>
-                            <span class="hex-title">SCADA Engine</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="monitoring" data-name="SCADA Stamping"
-                        data-keywords="scada stamping press monitoring">
-                        <a href="http://172.17.210.34/anyglass/MKM1_SCADA/Main%20V3.gdfx" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-display hex-icon"></i>
-                            <span class="hex-title">SCADA Stamping</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="monitoring" data-name="Solar Panel"
-                        data-keywords="solar panel renewable energy">
-                        <a href="https://server.growatt.com/login" target="_blank" class="hex-content hexagon">
-                            <i class="bi bi-sun hex-icon"></i>
-                            <span class="hex-title">Solar Panel</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="other" data-name="IWS Task"
-                        data-keywords="iws task work instruction">
-                        <a href="https://task.mile.app/login" target="_blank" class="hex-content hexagon">
-                            <i class="bi bi-kanban hex-icon"></i>
-                            <span class="hex-title">IWS</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="other" data-name="E2E"
-                        data-keywords="e2e end to end integration">
-                        <a href="https://e2e.ptmkm.co.id./login" target="_blank" class="hex-content hexagon">
-                            <i class="bi bi-link-45deg hex-icon"></i>
-                            <span class="hex-title">E2E</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="production" data-name="Pallet Tracing"
-                        data-keywords="pallet tracing tracking logistics">
-                        <a href="https://apps.ptmkm.co.id/mkm_palletTracing" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-box-seam hex-icon"></i>
-                            <span class="hex-title">Pallet Tracing</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="production" data-name="Checksheet SL-Frame"
-                        data-keywords="checksheet sl frame quality">
-                        <a href="https://apps.ptmkm.co.id/mkm_slframe" target="_blank" class="hex-content hexagon">
-                            <i class="bi bi-list-check hex-icon"></i>
-                            <span class="hex-title">SL-Frame Check</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="management" data-name="Asset Management"
-                        data-keywords="asset management inventory">
-                        <a href="https://apps.ptmkm.co.id/mkm_assetmanagement" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-archive hex-icon"></i>
-                            <span class="hex-title">Asset Mgmt</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="other" data-name="MKM Workflow"
-                        data-keywords="mkm workflow sharepoint">
-                        <a href="https://365ptmkm.sharepoint.com/sites/MKMWorkFlow" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-diagram-3 hex-icon"></i>
-                            <span class="hex-title">MKM Workflow</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="production" data-name="MKM Traceability Engine"
-                        data-keywords="mkm Traceability Engine">
-                        <a href="http://172.19.16.243:3000/login" target="_blank" class="hex-content hexagon">
-                            <i class="bi bi-gear-wide-connected hex-icon"></i>
-                            <span class="hex-title">Traceability Engine</span>
-                        </a>
-                    </div>
-
-
-                    <div class="hex-item fade-in" data-category="production" data-name="Operation Report">
-                        <a href="https://apps.ptmkm.co.id/mkm_operationreport/" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-bar-chart-line-fill hex-icon"></i>
-                            <span class="hex-title">Operation Report</span>
-                        </a>
-                    </div>
-
-
-                    <div class="hex-item fade-in" data-category="quality" data-name="Quality Portal">
-                        <a href="https://portalapps.ptmkm.co.id/mkm_supplierquality/" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-shield-check hex-icon"></i>
-                            <span class="hex-title">Quality Portal</span>
-                        </a>
-                    </div>
-
-                    <div class="hex-item fade-in" data-category="quality" data-name="Nugget Test">
-                        <a href="https://apps.ptmkm.co.id/mkm_operationreport/" target="_blank"
-                            class="hex-content hexagon">
-                            <i class="bi bi-check2-square hex-icon"></i>
-                            <span class="hex-title">Nugget Test</span>
-                        </a>
-                    </div>
-
+                            <a href="{{ $menu->url }}" target="_blank" class="hex-content hexagon">
+                                <i class="{{ $menu->icon }} hex-icon"></i>
+                                <span class="hex-title">{{ $menu->title }}</span>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
 
                 <!-- No Results -->

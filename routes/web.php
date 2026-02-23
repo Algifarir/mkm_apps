@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Dropdowns\Index as DropdownsIndex;
 use App\Livewire\HomeIndex;
+use App\Livewire\Menus\Index as MenusIndex;
 use App\Livewire\Pages\Landings\Index;
 use App\Livewire\Rules\Index as RulesIndex;
 use App\Livewire\Users\Index as UsersIndex;
@@ -23,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', UsersIndex::class)->name('users.index');
     Route::get('/rules', RulesIndex::class)->name('rules.index');
     Route::get('/dropdowns', DropdownsIndex::class)->name('dropdowns.index');
+    Route::get('/menus', MenusIndex::class)->name('menus.index');
 });
 
 require __DIR__ . '/auth.php';
