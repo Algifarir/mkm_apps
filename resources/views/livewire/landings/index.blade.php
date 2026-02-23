@@ -410,7 +410,7 @@
                         <div class="pulse-dot absolute -right-1 -top-1 h-3 w-3 rounded-full bg-green-400"></div>
                     </div>
                     <div>
-                        <h1 class="text-lg font-bold tracking-wide md:text-xl">MKM APPLICATION PORTAL</h1>
+                        <h1 class="text-lg font-bold tracking-wide md:text-xl text-white">MKM APPLICATION PORTAL</h1>
                         <p class="-mt-1 text-xs text-white/70">PT Mitsubishi Krama Yudha Motors & Manufacturing</p>
                     </div>
                 </a>
@@ -496,17 +496,17 @@
 
                 <!-- CATEGORY -->
                 <div class="mb-10 flex flex-wrap justify-center gap-3">
-                    <button class="category-pill active rounded-full bg-white/10 px-4 py-2"
+                    <button class="category-pill active rounded-full bg-white/10 px-4 py-2 text-white"
                         data-category="all">All</button>
-                    <button class="category-pill rounded-full bg-white/10 px-4 py-2"
+                    <button class="category-pill rounded-full bg-white/10 px-4 py-2 text-white"
                         data-category="production">Production</button>
-                    <button class="category-pill rounded-full bg-white/10 px-4 py-2"
+                    <button class="category-pill rounded-full bg-white/10 px-4 py-2 text-white"
                         data-category="monitoring">Monitoring</button>
-                    <button class="category-pill rounded-full bg-white/10 px-4 py-2"
+                    <button class="category-pill rounded-full bg-white/10 px-4 py-2 text-white"
                         data-category="quality">Quality</button>
-                    <button class="category-pill rounded-full bg-white/10 px-4 py-2"
+                    <button class="category-pill rounded-full bg-white/10 px-4 py-2 text-white"
                         data-category="management">Management</button>
-                    <button class="category-pill rounded-full bg-white/10 px-4 py-2"
+                    <button class="category-pill rounded-full bg-white/10 px-4 py-2 text-white"
                         data-category="other">Others</button>
                 </div>
 
