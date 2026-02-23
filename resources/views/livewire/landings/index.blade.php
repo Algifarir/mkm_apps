@@ -548,4 +548,68 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('search-input')
+            const clearBtn = document.getElementById('clear-search')
+            const categoryBtns = document.querySelectorAll('.category-pill')
+            const cards = document.querySelectorAll('.hex-item')
+            const noResults = document.getElementById('no-results')
+
+            let activeCategory = 'all'
+
+            function filterItems() {
+                const keyword = searchInput.value.toLowerCase().trim()
+                let visibleCount = 0
+
+                cards.forEach(card => {
+                    const keywords = (card.dataset.keywords || '').toLowerCase()
+                    const title = (card.dataset.name || '').toLowerCase()
+                    const category = (card.dataset.category || '').toLowerCase()
+
+                    const matchKeyword =
+                        keyword === '' ||
+                        title.includes(keyword) ||
+                        keywords.includes(keyword)
+
+                    const matchCategory =
+                        activeCategory === 'all' ||
+                        category === activeCategory
+
+                    if (matchKeyword && matchCategory) {
+                        card.style.display = ''
+                        visibleCount++
+                    } else {
+                        card.style.display = 'none'
+                    }
+                })
+
+                // toggle clear button
+                clearBtn.classList.toggle('hidden', keyword === '')
+
+                // toggle no result
+                noResults.classList.toggle('hidden', visibleCount !== 0)
+            }
+
+            // SEARCH (free text)
+            searchInput.addEventListener('input', filterItems)
+
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = ''
+                filterItems()
+            })
+
+            // CATEGORY FILTER
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'))
+                    btn.classList.add('active')
+
+                    activeCategory = btn.dataset.category.toLowerCase()
+                    filterItems()
+                })
+            })
+        })
+    </script>
 </div>
