@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Base App - Modern Management System')</title>
+    <link rel="icon" type="image/png" href="images\logo-mkm.png">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
@@ -63,25 +64,7 @@
         /* ============================================
            🎨 LOADING SCREEN STYLES
         ============================================ */
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #475569 0%, #334155 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-        }
 
-        #loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
 
         /* Animated Background Particles */
         .loading-particles {
